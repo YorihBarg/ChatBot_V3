@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Me ajuda BOT?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-light">
+
+<div class="container mt-5">
+    
+    <h1 class="text-center mb-4 display-5 fw-bold text-success">
+        Me ajuda BOT?
+    </h1>
+
+    <div class="card bg-secondary text-light p-4 shadow-lg">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Link da Página</label>
+                <input type="text" name="link" class="form-control bg-dark text-light border-light"
+                       placeholder="Digite o link aqui" value="{{ link }}">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">O que você quer saber?</label>
+                <input type="text" name="instrucao" class="form-control bg-dark text-light border-light"
+                       placeholder="Digite sua pergunta" value="{{ instrucao }}">
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 fw-bold">
+                Enviar
+            </button>
+
+        </form>
+
+        {% if resposta %}
+        <div class="mt-4 p-3 bg-dark border border-success rounded">
+            <h5 class="text-success">Resposta do Bot:</h5>
+            <p>{{ resposta }}</p>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<!-- VLibras -->
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</body>
+</html>
